@@ -29,7 +29,7 @@ main() {
         exit 1
     fi;
     
-    if [ -f ${DATA_DIR}/resource-cache ] || [ -d ${DATA_DIR}/resource-cache ]; then
+    if [ -f "${DATA_DIR}"/resource-cache ] || [ -d "${DATA_DIR}"/resource-cache ]; then
         echo "Forbidden file or directory name (resource-cache) in /data volume. Remove or rename it in order to run this container."
         exit 1
     fi;
@@ -102,7 +102,7 @@ main() {
     ln -sf /resources "${DATA_DIR}/resources"
     ln -sf /resource-cache "${DATA_DIR}/resource-cache"
 
-    "${MTA_SERVER_ROOT_DIR}/mta-server64" --config "${MTA_SERVER_CONFIG_FILE_NAME}" $@
+    "${MTA_SERVER_ROOT_DIR}/mta-server64" --config "${MTA_SERVER_CONFIG_FILE_NAME}" "$@"
 }
 
-main $@
+main "$@"

@@ -1,0 +1,25 @@
+version: "3.8"
+services:
+  mtaserver:
+    build: .
+    container_name: mtaserver
+    # environment:
+    #   - PUID=1000
+    #   - PGID=1000
+    networks:
+      - proxy
+    volumes:
+      # - ./data/server:/mtasa
+      - ./data/resources:/resources
+      - ./data/root:/data
+      # - ./data/resource-cache:/resource-cache
+      # - ./data/native-modules:/native-modules
+    ports:
+      - 22003:22003
+      - 22005:22005
+      - 22126:22126
+    restart: unless-stopped
+
+networks:
+  proxy:
+    external: true
